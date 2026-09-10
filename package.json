@@ -1,0 +1,27 @@
+{
+  "name": "enterprise-software-map",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/shared",
+    "packages/server",
+    "packages/web"
+  ],
+  "scripts": {
+    "build": "npm run build -w @map/shared && npm run build -w @map/server && npm run build -w @map/web",
+    "dev": "npm-run-all --parallel dev:server dev:web",
+    "dev:server": "npm run dev -w @map/server",
+    "dev:web": "npm run dev -w @map/web",
+    "test": "npm run test -w @map/shared && npm run test -w @map/server && npm run test -w @map/web",
+    "typecheck": "tsc -b packages/shared packages/server packages/web && tsc -p tsconfig.test.json"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "tsx": "^4.23.13",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=20.11"
+  }
+}

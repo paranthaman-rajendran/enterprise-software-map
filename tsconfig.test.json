@@ -1,0 +1,17 @@
+{
+  // Test files are excluded from every package's build config, so without this they would never
+  // be typechecked at all. `npm run typecheck` runs this pass alongside the build pass.
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "emitDeclarationOnly": false,
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node"]
+  },
+  "include": ["packages/*/src/**/*.test.ts"]
+}
